@@ -21,7 +21,10 @@ const AdminSidebar = ({ adminMenu, setAdminMenu, sidebarExpanded, setSidebarExpa
     return (
         <aside className={`bg-white border-r border-gray-200 h-screen fixed left-0 top-0 z-30 transition-all duration-300 flex flex-col ${sidebarExpanded ? 'w-64' : 'w-20'}`}>
             <div className="p-6 flex items-center justify-between">
-                <div className={`font-black text-2xl text-indigo-600 flex items-center gap-2 ${!sidebarExpanded && 'justify-center w-full'}`}>
+                <div
+                    onClick={() => setSidebarExpanded(!sidebarExpanded)}
+                    className={`font-black text-2xl text-indigo-600 flex items-center gap-2 cursor-pointer select-none transition-all ${!sidebarExpanded && 'justify-center w-full'}`}
+                >
                     <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
                         <CheckSquare size={20} />
                     </div>
