@@ -452,7 +452,23 @@ export default function App() {
           <ExamRunner
             user={currentUser}
             exam={activeExam}
-            questions={questions}
+            questions={(() => {
+              // Filter questions by Active Exam Subject & Class
+              const relevantQuestions = questions.filter(q =>
+                q.subjectId == activeExam.subjectId &&
+                q.class === activeExam.subjectClass
+              );
+
+              // Shuffle (Fisher-Yates)
+              const shuffled = [...relevantQuestions];
+              for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+              }
+
+              // Limit to 30
+              return shuffled.slice(0, 30);
+            })()}
             onFinish={handleStudentFinish}
           />
         ) : (
