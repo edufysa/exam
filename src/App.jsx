@@ -599,19 +599,21 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 font-sans">
       {renderNotifications()}
-      <TiltCard className="max-w-4xl min-h-[600px] flex-col md:flex-row">
-        <div className="md:w-1/2 bg-indigo-600 p-12 text-white flex flex-col justify-between relative overflow-hidden">
+      <TiltCard className="max-w-4xl w-full min-h-auto md:min-h-[600px] flex-col md:flex-row shadow-2xl overflow-hidden">
+        <div className="md:w-1/2 bg-indigo-600 p-6 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
           <div className="relative z-10">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="flex items-center gap-3 mb-4 md:mb-8">
               <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-indigo-600">
                 <CheckSquare size={24} />
               </div>
               <span className="font-black text-2xl tracking-tight">CBT<span className="text-indigo-200 font-light">ku</span></span>
             </div>
-            <h2 className="text-4xl font-bold mb-4 leading-tight">Ujian Online<br />Masa Depan.</h2>
-            <p className="text-indigo-100 text-lg opacity-90">Platform evaluasi pembelajaran modern, aman, dan efisien untuk sekolah Anda.</p>
+            <div className="hidden md:block">
+              <h2 className="text-4xl font-bold mb-4 leading-tight">Ujian Online<br />Masa Depan.</h2>
+              <p className="text-indigo-100 text-lg opacity-90">Platform evaluasi pembelajaran modern, aman, dan efisien untuk sekolah Anda.</p>
+            </div>
           </div>
-          <div className="relative z-10 mt-12">
+          <div className="relative z-10 mt-12 hidden md:block">
             <div className="flex items-center gap-4 text-sm font-medium opacity-80">
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map(i => <div key={i} className="w-8 h-8 rounded-full bg-indigo-400 border-2 border-indigo-600"></div>)}
@@ -620,12 +622,12 @@ export default function App() {
             </div>
           </div>
         </div>
-        <div className="md:w-1/2 p-12 bg-white flex flex-col justify-center">
-          <div className="mb-8">
+        <div className="md:w-1/2 p-6 md:p-12 bg-white flex flex-col justify-center">
+          <div className="mb-6 md:mb-8">
             <h3 className="text-2xl font-bold text-gray-800 mb-2">Selamat Datang! 👋</h3>
             <p className="text-gray-500">Silakan login untuk melanjutkan.</p>
           </div>
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-4 md:space-y-6">
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700">Username / NIS</label>
               <div className="relative">
@@ -644,6 +646,9 @@ export default function App() {
               AKSES DASHBOARD <ChevronRight size={20} />
             </button>
           </form>
+          <div className="mt-6">
+            <CopyrightFooter className="border-none py-0" />
+          </div>
         </div>
       </TiltCard>
     </div>
